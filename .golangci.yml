@@ -1,0 +1,20 @@
+# nix run nixpkgs\#golangci-lint -- run
+version: "2"
+linters:
+  disable:
+    - errcheck      # TODO(rsned): Enable once outstanding lint bugs are fixed.
+    - staticcheck   # TODO(rsned): Enable once outstanding lint bugs are fixed.
+    - unused
+  exclusions:
+    generated: disable
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    gofmt:
+      # Simplify code: gofmt with `-s` option.
+      # Default: true
+      simplify: false
+  exclusions:
+    generated: disable
