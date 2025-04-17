@@ -12,7 +12,8 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
+    # unstable is necessary to pick up golangci-lint v2
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
   };
 
   outputs = { self, nixpkgs, flake-utils }:
@@ -23,7 +24,7 @@
         {
           devShell = pkgs.mkShell {
             buildInputs = with pkgs; [
-              go_1_22
+              go_1_23
               golangci-lint
             ];
           };
